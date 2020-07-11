@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/music-lesson-practice/static/css/main.193a9d47.chunk.css",
+    "main.js": "/music-lesson-practice/static/js/main.8ceebe82.chunk.js",
+    "main.js.map": "/music-lesson-practice/static/js/main.8ceebe82.chunk.js.map",
+    "runtime-main.js": "/music-lesson-practice/static/js/runtime-main.4e563cbe.js",
+    "runtime-main.js.map": "/music-lesson-practice/static/js/runtime-main.4e563cbe.js.map",
+    "static/js/2.f9a7b911.chunk.js": "/music-lesson-practice/static/js/2.f9a7b911.chunk.js",
+    "static/js/2.f9a7b911.chunk.js.map": "/music-lesson-practice/static/js/2.f9a7b911.chunk.js.map",
+    "index.html": "/music-lesson-practice/index.html",
+    "precache-manifest.8bec2f943d239cd67cae4748766f0714.js": "/music-lesson-practice/precache-manifest.8bec2f943d239cd67cae4748766f0714.js",
+    "service-worker.js": "/music-lesson-practice/service-worker.js",
+    "static/css/main.193a9d47.chunk.css.map": "/music-lesson-practice/static/css/main.193a9d47.chunk.css.map",
+    "static/js/2.f9a7b911.chunk.js.LICENSE.txt": "/music-lesson-practice/static/js/2.f9a7b911.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4e563cbe.js",
+    "static/js/2.f9a7b911.chunk.js",
+    "static/css/main.193a9d47.chunk.css",
+    "static/js/main.8ceebe82.chunk.js"
+  ]
+}

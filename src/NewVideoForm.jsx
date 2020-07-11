@@ -1,11 +1,14 @@
 import React from "react";
 import { InputBase, Button, TextField } from "@material-ui/core";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const NewVideoForm = () => (
   <>
-    <h2 style={{ fontSize: "0.75rem", textAlign: "left" }}>
-      ADDING A NEW VIDEO
-    </h2>
+    <Button variant='text' startIcon={<ArrowBackIcon />}>
+      Back
+    </Button>
+    <h2>ADDING A NEW VIDEO</h2>
+    <p>Fill out the form below to add and upload a new video.</p>
     <form>
       <TextField label='Title' fullWidth margin='normal' />
       <TextField
@@ -16,14 +19,12 @@ const NewVideoForm = () => (
         fullWidth
         margin='normal'
       />
-      <InputBase type='file' label='Video file' fullWidth />
+      <InputBase type='file' label='Video file' fullWidth required />
 
-      {/* TODO: Pin to bottom of screen */}
       <Button
-        variant='outlined'
-        color='primary'
+        className='primaryButton'
         fullWidth
-        size='large'
+        variant='contained'
         margin='normal'
       >
         Upload

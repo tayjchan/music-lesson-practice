@@ -1,50 +1,42 @@
 import React from "react";
-import {
-  Avatar,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  IconButton,
-  Divider,
-} from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
-import MusicNoteIcon from "@material-ui/icons/MusicNote";
-import DeleteIcon from "@material-ui/icons/Delete";
+import { Grid } from "@material-ui/core";
+import VideoItem from "./VideoItem";
 
 const temp = [
   {
     title: "Jingle Bells",
-    description: "Jingle bells, jingle bells, jingle all the way...",
+    description:
+      "Jingle bells, jingle bells. Jingle all the way. I'm practicing this to ready myself for Christmas.",
   },
   {
     title: "Amazing Grace",
-    description: "Amazing grace, so sweeeeeet the sound....",
+    description: "",
+  },
+  {
+    title: "Cruel Summer",
+    description: "Probably the best song off of Taylor Swift's newest album.",
+  },
+  {
+    title: "All Too Well",
+    description: "Probably the best song of Taylor Swift, period.",
+  },
+  {
+    title: "Red",
+    description:
+      "Not really my favorite Taylor Swift song if I'm being honest.",
   },
 ];
 
 const VideoList = () => {
   return (
     <>
-      <h2 style={{ fontSize: "0.75rem", textAlign: "left" }}>ALL VIDEOS</h2>
+      <h2>ALL VIDEOS</h2>
+      <p>
+        Click on one of the titles below to view description and download video.
+      </p>
+
       {temp.map((video) => (
-        <List key={video.title} dense>
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <MusicNoteIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={video.title} secondary={video.description} />
-            <IconButton edge='end' aria-label='edit' disabled>
-              <EditIcon />
-            </IconButton>
-            <IconButton edge='end' aria-label='delete'>
-              <DeleteIcon />
-            </IconButton>
-          </ListItem>
-          <Divider />
-        </List>
+        <VideoItem video={video} />
       ))}
     </>
   );

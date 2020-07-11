@@ -32,8 +32,7 @@ async function addNewVideo(title, description, file) {
 }
 
 async function deleteVideo(id) {
-  // TODO:
-  //   firestore.collection("videos").get()
+  await firestore.collection("videos").doc(id).delete();
 }
 
 export { getAllVideos, addNewVideo, deleteVideo };

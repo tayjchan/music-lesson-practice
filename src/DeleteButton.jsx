@@ -7,10 +7,12 @@ import {
   DialogActions,
   Button,
 } from "@material-ui/core";
+import { deleteVideo } from "./Firestore";
 
 const DeleteButton = ({ title, videoId }) => {
   const [open, setOpen] = useState(false);
-  function deleteVideo() {
+  async function handleDelete() {
+    await deleteVideo(videoId);
     setOpen(false);
   }
   return (
@@ -18,12 +20,7 @@ const DeleteButton = ({ title, videoId }) => {
       <IconButton aria-label='delete' onClick={() => !open && setOpen(true)}>
         <DeleteIcon />
       </IconButton>
-      <Dialog
-        open={open}
-        onClose={() => setOpen(false)}
-        // aria-labelledby='simple-modal-title'
-        // aria-describedby='simple-modal-description'
-      >
+      <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogContent>
           Are you sure you want to delete <i>{title}</i>?<br />
           This action cannot be undone.
@@ -33,7 +30,9 @@ const DeleteButton = ({ title, videoId }) => {
           <Button autoFocus onClick={() => setOpen(false)}>
             Cancel
           </Button>
-          <Button onClick={deleteVideo}>Ok</Button>
+          <Button onClick={handleDelete} type='button'>
+            Ok
+          </Button>
         </DialogActions>
       </Dialog>
     </>

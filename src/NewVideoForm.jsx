@@ -41,11 +41,13 @@ const NewVideoForm = () => {
       </Button>
       <h2>ADDING A NEW VIDEO</h2>
       <p>Fill out the form below to add and upload a new video.</p>
+      {/* TODO: Form validation */}
       <form>
         <TextField
           label='Title'
           fullWidth
           margin='normal'
+          required
           onChange={(e) => setTitle(e.target.value)}
         />
         <TextField

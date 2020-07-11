@@ -9,11 +9,15 @@ import {
 } from "@material-ui/core";
 import { deleteVideo } from "./Firestore";
 
-const DeleteButton = ({ title, videoId }) => {
+const DeleteButton = ({ title, videoId, setNeedUpdating }) => {
   const [open, setOpen] = useState(false);
+
   async function handleDelete() {
     await deleteVideo(videoId);
     setOpen(false);
+    setTimeout(function () {
+      setNeedUpdating(true);
+    }, 400);
   }
   return (
     <>

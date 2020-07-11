@@ -10,7 +10,7 @@ import MusicNoteIcon from "@material-ui/icons/MusicNote";
 import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import DeleteButton from "./DeleteButton";
 
-const VideoItem = ({ video }) => {
+const VideoItem = ({ video, setNeedUpdating }) => {
   const [expanded, setExpanded] = useState(false);
   const description = video.description
     ? video.description
@@ -45,7 +45,11 @@ const VideoItem = ({ video }) => {
           <IconButton aria-label='download' onClick={handleClickDownload}>
             <CloudDownloadIcon />
           </IconButton>
-          <DeleteButton title={video.title} videoId={video.id} />
+          <DeleteButton
+            title={video.title}
+            videoId={video.id}
+            setNeedUpdating={setNeedUpdating}
+          />
         </div>
       ) : (
         <>
@@ -55,7 +59,11 @@ const VideoItem = ({ video }) => {
             secondary={expanded ? description : null}
             onClick={() => setExpanded(!expanded)}
           />
-          <DeleteButton title={video.title} videoId={video.id} />
+          <DeleteButton
+            title={video.title}
+            videoId={video.id}
+            setNeedUpdating={setNeedUpdating}
+          />
         </>
       )}
     </ListItem>

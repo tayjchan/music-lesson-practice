@@ -53,6 +53,7 @@ function addNewVideo(title, description, file, setProgress) {
 }
 
 async function deleteVideo(id) {
+  // TODO: Delete video from firebase storage
   await firestore.collection("videos").doc(id).delete();
 }
 

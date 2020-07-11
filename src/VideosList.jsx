@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 const VideoList = () => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [needUpdating, setNeedUpdating] = useState(false); // TODO: Probably a better way of doing this.
 
   useEffect(() => {
     getAllVideos().then((data) => {
@@ -14,6 +15,17 @@ const VideoList = () => {
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    if (needUpdating) {
+      setLoading(true);
+      getAllVideos().then((data) => {
+        setVideos(data);
+        setLoading(false);
+        setNeedUpdating(false);
+      });
+    }
+  }, [needUpdating]);
 
   const history = useHistory();
   return (
@@ -35,7 +47,13 @@ const VideoList = () => {
       {loading && <CircularProgress />}
 
       {videos.length >= 1 &&
-        videos.map((video) => <VideoItem key={video.id} video={video} />)}
+        videos.map((video) => (
+          <VideoItem
+            key={video.id}
+            video={video}
+            setNeedUpdating={setNeedUpdating}
+          />
+        ))}
 
       {!loading && videos.length === 0 && <p>Currently no videos available.</p>}
     </>

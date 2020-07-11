@@ -15,6 +15,13 @@ const VideoItem = ({ video }) => {
   const description = video.description
     ? video.description
     : "No description available.";
+
+  function handleClickDownload() {
+    if (video.fileUrl) {
+      window.open(video.fileUrl, "_blank");
+    }
+  }
+
   return (
     <ListItem
       divider
@@ -35,7 +42,7 @@ const VideoItem = ({ video }) => {
             {video.title}
           </p>
           <p>{description}</p>
-          <IconButton aria-label='download'>
+          <IconButton aria-label='download' onClick={handleClickDownload}>
             <CloudDownloadIcon />
           </IconButton>
           <DeleteButton title={video.title} videoId={video.id} />

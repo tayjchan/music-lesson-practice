@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/music-lesson-practice/static/css/main.193a9d47.chunk.css",
-    "main.js": "/music-lesson-practice/static/js/main.4127c92e.chunk.js",
-    "main.js.map": "/music-lesson-practice/static/js/main.4127c92e.chunk.js.map",
+    "main.js": "/music-lesson-practice/static/js/main.2b8ff124.chunk.js",
+    "main.js.map": "/music-lesson-practice/static/js/main.2b8ff124.chunk.js.map",
     "runtime-main.js": "/music-lesson-practice/static/js/runtime-main.4e563cbe.js",
     "runtime-main.js.map": "/music-lesson-practice/static/js/runtime-main.4e563cbe.js.map",
     "static/js/2.834b87d3.chunk.js": "/music-lesson-practice/static/js/2.834b87d3.chunk.js",
     "static/js/2.834b87d3.chunk.js.map": "/music-lesson-practice/static/js/2.834b87d3.chunk.js.map",
     "index.html": "/music-lesson-practice/index.html",
-    "precache-manifest.5c51d47ac3b445b81605649ecd8de1f9.js": "/music-lesson-practice/precache-manifest.5c51d47ac3b445b81605649ecd8de1f9.js",
+    "precache-manifest.0ac17eed7888ae9219fb2fff78f2ba19.js": "/music-lesson-practice/precache-manifest.0ac17eed7888ae9219fb2fff78f2ba19.js",
     "service-worker.js": "/music-lesson-practice/service-worker.js",
     "static/css/main.193a9d47.chunk.css.map": "/music-lesson-practice/static/css/main.193a9d47.chunk.css.map",
     "static/js/2.834b87d3.chunk.js.LICENSE.txt": "/music-lesson-practice/static/js/2.834b87d3.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.4e563cbe.js",
     "static/js/2.834b87d3.chunk.js",
     "static/css/main.193a9d47.chunk.css",
-    "static/js/main.4127c92e.chunk.js"
+    "static/js/main.2b8ff124.chunk.js"
   ]
 }

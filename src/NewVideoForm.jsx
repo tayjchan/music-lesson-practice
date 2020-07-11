@@ -2,19 +2,28 @@ import React, { useState } from "react";
 import { InputBase, Button, TextField } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { addNewVideo } from "./Firestore";
+import { useHistory } from "react-router-dom";
 
 const NewVideoForm = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [file, setFile] = useState();
 
+  const history = useHistory();
+
   function submitForm(event) {
     event.preventDefault();
     addNewVideo(title, description, file);
+
+    history.push("/");
   }
   return (
     <>
-      <Button variant='text' startIcon={<ArrowBackIcon />}>
+      <Button
+        variant='text'
+        startIcon={<ArrowBackIcon />}
+        onClick={() => history.push("/")}
+      >
         Back
       </Button>
       <h2>ADDING A NEW VIDEO</h2>

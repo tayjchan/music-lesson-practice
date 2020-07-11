@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import VideoItem from "./VideoItem";
 import { getAllVideos } from "./Firestore";
+import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const VideoList = () => {
   const [videos, setVideos] = useState([]);
@@ -8,9 +10,18 @@ const VideoList = () => {
     getAllVideos().then((data) => setVideos(data));
   }, []);
 
-  console.log(videos);
+  const history = useHistory();
   return (
     <>
+      <Button
+        className='primaryButton'
+        fullWidth
+        variant='contained'
+        margin='normal'
+        onClick={() => history.push("/new")}
+      >
+        ADD NEW VIDEO
+      </Button>
       <h2>ALL VIDEOS</h2>
       <p>
         Click on one of the titles below to view description and download video.

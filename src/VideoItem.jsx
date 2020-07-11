@@ -38,7 +38,7 @@ const VideoItem = ({ video }) => {
           <IconButton aria-label='download'>
             <CloudDownloadIcon />
           </IconButton>
-          <DeleteButton title={video.title} />
+          <DeleteButton title={video.title} videoId={video.id} />
         </div>
       ) : (
         <>
@@ -48,7 +48,7 @@ const VideoItem = ({ video }) => {
             secondary={expanded ? description : null}
             onClick={() => setExpanded(!expanded)}
           />
-          <DeleteButton title={video.title} />
+          <DeleteButton title={video.title} videoId={video.id} />
         </>
       )}
     </ListItem>

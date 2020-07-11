@@ -8,8 +8,11 @@ import {
   Button,
 } from "@material-ui/core";
 
-const DeleteButton = ({ title }) => {
+const DeleteButton = ({ title, videoId }) => {
   const [open, setOpen] = useState(false);
+  function deleteVideo() {
+    setOpen(false);
+  }
   return (
     <>
       <IconButton aria-label='delete' onClick={() => !open && setOpen(true)}>
@@ -30,7 +33,7 @@ const DeleteButton = ({ title }) => {
           <Button autoFocus onClick={() => setOpen(false)}>
             Cancel
           </Button>
-          <Button onClick={() => setOpen(false)}>Ok</Button>
+          <Button onClick={deleteVideo}>Ok</Button>
         </DialogActions>
       </Dialog>
     </>

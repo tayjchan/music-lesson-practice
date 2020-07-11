@@ -1,3 +1,9 @@
+A fairly simple web application that lets you upload and view videos. 
+
+Frontend: ReactJS
+Backend: Firebase storage + firebase
+Other: MaterialUI, SCSS
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

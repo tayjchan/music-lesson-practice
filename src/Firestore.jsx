@@ -24,7 +24,7 @@ async function getAllVideos() {
   });
 }
 
-function addNewVideo(title, description, file) {
+function addNewVideo(title, description, file, setProgress) {
   const storageRef = storage.ref();
 
   const uploadTask = storageRef.child(title).put(file);
@@ -34,7 +34,7 @@ function addNewVideo(title, description, file) {
       const progress = Math.round(
         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
       );
-      console.log("Uploading progress: " + progress);
+      setProgress(progress);
     },
     (error) => {
       console.log(error);

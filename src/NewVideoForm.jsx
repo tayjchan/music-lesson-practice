@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import { InputBase, Button, TextField } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import {
+  InputBase,
+  Button,
+  TextField,
+  LinearProgress,
+} from "@material-ui/core";
+
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { addNewVideo } from "./Firestore";
 import { useHistory } from "react-router-dom";
@@ -8,20 +14,27 @@ const NewVideoForm = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [file, setFile] = useState([]);
-
+  const [progress, setProgress] = useState();
   const history = useHistory();
+
+  useEffect(() => {
+    setTimeout(function () {
+      if (progress === 100) {
+        history.push("/");
+      }
+    }, 1000);
+  }, [progress, history]);
 
   async function submitForm(event) {
     event.preventDefault();
-    await addNewVideo(title, description, file);
-
-    history.push("/");
+    addNewVideo(title, description, file, setProgress);
   }
   return (
     <>
       <Button
         variant='text'
         startIcon={<ArrowBackIcon />}
+        disabled={progress < 100}
         onClick={() => history.push("/")}
       >
         Back
@@ -59,10 +72,12 @@ const NewVideoForm = () => {
           variant='contained'
           margin='normal'
           type='submit'
+          disabled={progress < 100}
           onClick={submitForm}
         >
           Upload
         </Button>
+        {progress && <LinearProgress variant='determinate' value={progress} />}
       </form>
     </>
   );

@@ -7,13 +7,13 @@ import { useHistory } from "react-router-dom";
 const NewVideoForm = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
-  const [file, setFile] = useState();
+  const [file, setFile] = useState([]);
 
   const history = useHistory();
 
-  function submitForm(event) {
+  async function submitForm(event) {
     event.preventDefault();
-    addNewVideo(title, description, file);
+    await addNewVideo(title, description, file);
 
     history.push("/");
   }
@@ -33,7 +33,6 @@ const NewVideoForm = () => {
           label='Title'
           fullWidth
           margin='normal'
-          value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <TextField
@@ -43,7 +42,6 @@ const NewVideoForm = () => {
           variant='outlined'
           fullWidth
           margin='normal'
-          title={description}
           onChange={(e) => setDescription(e.target.value)}
         />
         {/* TODO: Only allow video files */}
@@ -52,8 +50,7 @@ const NewVideoForm = () => {
           label='Video file'
           fullWidth
           required
-          value={file}
-          onChange={(e) => setFile(e.target.value)}
+          onChange={(e) => setFile(e.target.files[0])}
         />
 
         <Button

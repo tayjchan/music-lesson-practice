@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB_xNt7pi_cH6wTCBq3AEuVtkqGLVt1xSI",
@@ -14,6 +15,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const firestore = firebase.firestore();
+const storage = firebase.storage();
 
 async function getAllVideos() {
   const videos = await firestore.collection("videos").get();
@@ -22,13 +24,32 @@ async function getAllVideos() {
   });
 }
 
-async function addNewVideo(title, description, file) {
-  // TODO: Add file to fire storage
-  firestore.collection("videos").add({
-    title,
-    description,
-    fileUrl: "",
-  });
+function addNewVideo(title, description, file) {
+  const storageRef = storage.ref();
+
+  const uploadTask = storageRef.child(title).put(file);
+  uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      const progress = Math.round(
+        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+      );
+      console.log("Uploading progress: " + progress);
+    },
+    (error) => {
+      console.log(error);
+    },
+    async () => {
+      // Upload complete
+      const downloadLink = await storageRef.child(title).getDownloadURL();
+      console.log(downloadLink);
+      await firestore.collection("videos").add({
+        title,
+        description,
+        fileUrl: downloadLink,
+      });
+    }
+  );
 }
 
 async function deleteVideo(id) {

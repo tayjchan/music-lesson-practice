@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import VideoItem from "./VideoItem";
 import { getAllVideos } from "./Firestore";
-import { Button } from "@material-ui/core";
+import { Button, CircularProgress } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
 const VideoList = () => {
   const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    getAllVideos().then((data) => setVideos(data));
+    getAllVideos().then((data) => {
+      setVideos(data);
+      setLoading(false);
+    });
   }, []);
 
   const history = useHistory();
@@ -27,11 +32,12 @@ const VideoList = () => {
         Click on one of the titles below to view description and download video.
       </p>
 
-      {videos.length >= 1 ? (
-        videos.map((video) => <VideoItem key={video.id} video={video} />)
-      ) : (
-        <p>Currently no videos available.</p>
-      )}
+      {loading && <CircularProgress />}
+
+      {videos.length >= 1 &&
+        videos.map((video) => <VideoItem key={video.id} video={video} />)}
+
+      {!loading && videos.length === 0 && <p>Currently no videos available.</p>}
     </>
   );
 };

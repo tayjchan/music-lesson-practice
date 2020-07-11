@@ -22,4 +22,17 @@ async function getAllVideos() {
   });
 }
 
-export { getAllVideos };
+async function addNewVideo(title, description, file) {
+  // TODO: Add file to fire storage
+  firestore.collection("videos").add({
+    title,
+    description,
+    fileUrl: "",
+  });
+}
+
+async function deleteVideo(id) {
+  // TODO:
+}
+
+export { getAllVideos, addNewVideo, deleteVideo };

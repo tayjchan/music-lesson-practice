@@ -1,32 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import VideoItem from "./VideoItem";
-
-const temp = [
-  {
-    title: "Jingle Bells",
-    description:
-      "Jingle bells, jingle bells. Jingle all the way. I'm practicing this to ready myself for Christmas.",
-  },
-  {
-    title: "Amazing Grace",
-    description: "",
-  },
-  {
-    title: "Cruel Summer",
-    description: "Probably the best song off of Taylor Swift's newest album.",
-  },
-  {
-    title: "All Too Well",
-    description: "Probably the best song of Taylor Swift, period.",
-  },
-  {
-    title: "Red",
-    description:
-      "Not really my favorite Taylor Swift song if I'm being honest.",
-  },
-];
+import { getAllVideos } from "./Firestore";
 
 const VideoList = () => {
+  const [videos, setVideos] = useState([]);
+  useEffect(() => {
+    getAllVideos().then((data) => setVideos(data));
+  }, []);
+
+  console.log(videos);
   return (
     <>
       <h2>ALL VIDEOS</h2>
@@ -34,9 +16,11 @@ const VideoList = () => {
         Click on one of the titles below to view description and download video.
       </p>
 
-      {temp.map((video) => (
-        <VideoItem video={video} />
-      ))}
+      {videos.length >= 1 ? (
+        videos.map((video) => <VideoItem key={video.id} video={video} />)
+      ) : (
+        <p>Currently no videos available.</p>
+      )}
     </>
   );
 };
